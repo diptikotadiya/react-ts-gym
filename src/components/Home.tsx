@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.jpg'
 import image3 from '../assets/image3.jpg'
@@ -15,6 +15,8 @@ import slider1 from '../assets/slider1.jpg'
 import slider2 from '../assets/slider2.jpg'
 import slider3 from '../assets/slider3.jpg'
 import { NextArrow, PrevArrow } from './CustomArrow'; // Adjust the import path as necessary
+import Button from './Button'
+import Input from './Input'
 
 type singleImageDiv = {
   image : string,
@@ -65,7 +67,7 @@ function Home() {
       ))}
       </Slider>
       {/* second black section */}
-      <div className='bg-black text-white flex flex-col text-center p-5 lg:p-20'>
+      <div className='bg-black text-white flex flex-col space-y-2 text-center p-5 lg:p-20'>
         <h2 className='text-l lg:text-2xl font-light'> 
           Experience the Fitness Wave
           At Mumbai's Friendliest Gym IN ANDHERI WEST!
@@ -73,14 +75,20 @@ function Home() {
         <h1 className='text-4xl lg:text-6xl font-bold italic'>
           Join Waves Gym Today
         </h1>
-        <div className='flex flex-col lg:flex-row p-5 justify-center'>
-          <input placeholder='Name' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5  rounded-sm'/>
+        <div className='flex flex-col lg:flex-row p-5 justify-center space-y-5 lg:space-y-0 lg:space-x-5'>
+        {/* <input placeholder='Name' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5  rounded-sm'/>
           <input placeholder='Email' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
           <input placeholder='Mobile' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
-          <input placeholder='Choose One' className='lg:w-1/6 p-1 h-10  mb-5 rounded-sm'/>
+          <input placeholder='Choose One' className='lg:w-1/6 p-1 h-10  mb-5 rounded-sm'/>*/}
+          <Input placeholder='Name'/>
+          <Input placeholder='Email'/>
+          <Input placeholder='Mobile'/>
+          <Input placeholder='Choose One'/>
         </div>
-        <div className='h-10 rounded-sm '>
-          <button className='w-1/2 lg:w-1/4 h-10 lg:h-14  bg-orange-500 text-white text-2xl lg:text-3xl italic font-bold rounded-sm'>Get Started</button>
+        <div className='w-full'>
+          <Button classname='lg:text-3xl font-bold'>
+             Get Statrted
+          </Button>
         </div>
       </div>
 
@@ -99,9 +107,7 @@ function Home() {
               Get fit fast with Waves Gym’s <b className='font-black'>certified personal trainers</b>. Enjoy cardio, strength, and weight training with top equipment. <b className='font-black'>Join now</b> and make ‘Impossible’ ‘I’m Possible’!
             </p>
             <div className='flex justify-center'>
-              <button className='bg-orange-500 text-white w-1/2 lg:w-1/3 h-10 lg:h-14 text-2xl italic rounded'>
-                Book A Free Session
-              </button>
+              <Button classname=''>Book A Free Session</Button>
             </div>
           </div>
         {/*right */} 
