@@ -1,4 +1,4 @@
-//import React from 'react'
+import {useState} from 'react'
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.jpg'
 import image3 from '../assets/image3.jpg'
@@ -22,8 +22,24 @@ type singleImageDiv = {
   image : string,
   title : string
 }
+type UserProps = {
+  name : string,
+  email : string,
+  mobile : string,
+  choose : string
+}
 
 function Home() {
+  const [user,setUser] = useState<UserProps>({}as UserProps);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, placeholder: string) => {
+    console.log(placeholder)
+    setUser({
+      ...user,
+      [placeholder]: e.target.value // Update the user object based on the dynamic property
+    });
+    console.log({...user});
+  };
+  
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -80,10 +96,10 @@ function Home() {
           <input placeholder='Email' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
           <input placeholder='Mobile' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
           <input placeholder='Choose One' className='lg:w-1/6 p-1 h-10  mb-5 rounded-sm'/>*/}
-          <Input placeholder='Name'/>
-          <Input placeholder='Email'/>
-          <Input placeholder='Mobile'/>
-          <Input placeholder='Choose One'/>
+          <Input placeholder='Name' value={user.name}  handleChange={handleChange}/>
+          <Input placeholder='Email' value={user.email} handleChange={(e)=>handleChange(e,'name')}/>
+          <Input placeholder='Mobile' value={user.mobile}/>
+          <Input placeholder='Choose One' value={user.choose}/>
         </div>
         <div className='w-full'>
           <Button classname='lg:text-3xl font-bold'>
