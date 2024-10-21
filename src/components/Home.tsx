@@ -1,4 +1,4 @@
-import {useState} from 'react'
+//import {useState} from 'react'
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.jpg'
 import image3 from '../assets/image3.jpg'
@@ -17,29 +17,42 @@ import slider3 from '../assets/slider3.jpg'
 import { NextArrow, PrevArrow } from './CustomArrow'; // Adjust the import path as necessary
 import Button from './Button'
 import Input from './Input'
+import {SubmitHandler, useForm} from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { addMembers } from './store/memberSlice'
+
+
 
 type singleImageDiv = {
   image : string,
   title : string
 }
-type UserProps = {
+type FormValuesType = {
   name : string,
   email : string,
   mobile : string,
   choose : string
 }
-
 function Home() {
-  const [user,setUser] = useState<UserProps>({}as UserProps);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, placeholder: string) => {
-    console.log(placeholder)
-    setUser({
-      ...user,
-      [placeholder]: e.target.value // Update the user object based on the dynamic property
-    });
-    console.log({...user});
-  };
-  
+
+ const dispatch = useDispatch();
+
+  const { register,handleSubmit,reset } = useForm<FormValuesType>({
+    defaultValues: {
+      name: '',
+      email: '',
+      mobile: '',
+      choose: '',
+    },
+  });
+
+ // Type provided here
+ const onSubmit: SubmitHandler<FormValuesType> = (data) => {
+  console.log(data); // This will log the form data
+  dispatch(addMembers({...data}))
+  reset()
+};
+ 
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -51,7 +64,9 @@ function Home() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
   const slider : string[] = [slider1, slider2,slider3]
+
   const imagesDiv : singleImageDiv[]  = [
     {
       image: image1,
@@ -71,10 +86,13 @@ function Home() {
     }
   ] 
   return (
+
     <div>
+
       <Container>
       
       {/* slider*/}
+
       <Slider {...settings}>
       {slider.map((item,index) => (
         <div key={index}>
@@ -82,7 +100,9 @@ function Home() {
         </div>
       ))}
       </Slider>
+
       {/* second black section */}
+
       <div className='bg-black text-white flex flex-col space-y-2 text-center p-5 lg:p-20'>
         <h2 className='text-l lg:text-2xl font-light'> 
           Experience the Fitness Wave
@@ -91,24 +111,51 @@ function Home() {
         <h1 className='text-4xl lg:text-6xl font-bold italic'>
           Join Waves Gym Today
         </h1>
-        <div className='flex flex-col lg:flex-row p-5 justify-center space-y-5 lg:space-y-0 lg:space-x-5'>
-        {/* <input placeholder='Name' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5  rounded-sm'/>
-          <input placeholder='Email' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
-          <input placeholder='Mobile' className='lg:w-1/6 lg:mr-5 p-1 h-10  mb-5 rounded-sm'/>
-          <input placeholder='Choose One' className='lg:w-1/6 p-1 h-10  mb-5 rounded-sm'/>*/}
-          <Input placeholder='Name' value={user.name}  handleChange={handleChange}/>
-          <Input placeholder='Email' value={user.email} handleChange={(e)=>handleChange(e,'name')}/>
-          <Input placeholder='Mobile' value={user.mobile}/>
-          <Input placeholder='Choose One' value={user.choose}/>
-        </div>
-        <div className='w-full'>
-          <Button classname='lg:text-3xl font-bold'>
-             Get Statrted
-          </Button>
-        </div>
+        {/* react-hook-form*/}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className='flex flex-col lg:flex-row p-5 justify-center space-y-5 lg:space-y-0 lg:space-x-5'>
+            {/* using Input Component */}
+            <Input 
+            placeholder='Name'
+            //value={user.name} 
+            {...register('name',
+              
+            )} 
+             />
+            <Input
+            placeholder='Email'
+            {...register('email',
+             
+            )} 
+            // handleChange={(e)=>handleChange(e,'name')}
+            />
+            <Input 
+            placeholder='Mobile'
+            {...register('mobile',
+              
+            )} 
+            // value={user.choose}
+            />
+            <Input 
+            placeholder='Choose One'
+            {...register('choose',
+              
+            )} 
+            // value={user.choose}
+            />
+          </div>
+          <div className='w-full'>
+            <Button
+            classname='lg:text-3xl font-bold'
+            type ='submit'>
+              Get Started
+            </Button>
+          </div>
+        </form>
       </div>
 
       {/* third section */ }
+
       <div className='flex flex-col lg:flex-row p-10 lg:p-20'>
         {/*left */}
         <div className='w-full lg:w-3/5 flex flex-col space-y-5 lg:space-y-10'>
@@ -123,7 +170,7 @@ function Home() {
               Get fit fast with Waves Gym’s <b className='font-black'>certified personal trainers</b>. Enjoy cardio, strength, and weight training with top equipment. <b className='font-black'>Join now</b> and make ‘Impossible’ ‘I’m Possible’!
             </p>
             <div className='flex justify-center'>
-              <Button classname=''>Book A Free Session</Button>
+              <Button type='button' classname=''>Book A Free Session</Button>
             </div>
           </div>
         {/*right */} 
@@ -176,8 +223,8 @@ function Home() {
          <div className='w-full  flex flex-col lg:flex-row px-5 lg:px-10'>
           {
             imagesDiv.map((item : singleImageDiv,index:number) =>(
-              <div className='w-full lg:w-1/4 p-2 border-1px-gray-200 shadow-lg'>
-                <div key={index} className='w-full'>
+              <div key={index} className='w-full lg:w-1/4 p-2 border-1px-gray-200 shadow-lg'>
+                <div  className='w-full'>
                   <img src={item.image} className='object-cover h-[250px] w-full rounded'/>
                 </div>
                 <div className='w-full h-[50px] mt-5 text-center text-lg font-normal'>
