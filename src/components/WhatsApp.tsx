@@ -1,6 +1,6 @@
-import React from 'react'
+//import React from 'react'
 import { BiLogoWhatsappSquare } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 function WhatsApp() {
   return (
