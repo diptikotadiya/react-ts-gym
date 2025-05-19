@@ -1,4 +1,4 @@
-//import {useState} from 'react'
+//import {useState,useEffect} from 'react'
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.jpg'
 import image3 from '../assets/image3.jpg'
@@ -63,6 +63,7 @@ function Home() {
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    pauseOnHover: false,//
   };
 
   const slider : string[] = [slider1, slider2,slider3]
@@ -92,15 +93,15 @@ function Home() {
       <Container>
       
       {/* slider*/}
-
-      <Slider {...settings}>
-      {slider.map((item,index) => (
-        <div key={index}>
-          <img src={item} className='w-full h-auto md:h-[300px] lg:h-[800px]'/>
-        </div>
-      ))}
+      
+       <Slider {...settings} className='w-full h-auto md:h-[300px] lg:h-[800px]'>
+        {slider.map((item,index) => (
+          <div key={index}>
+            <img src={item} className='w-full h-auto md:h-[300px] lg:h-[800px]'/>
+          </div>
+        ))}
       </Slider>
-
+  
       {/* second black section */}
 
       <div className='bg-black text-white flex flex-col space-y-2 text-center p-5 lg:p-20'>
