@@ -7,11 +7,11 @@ import Home from './components/Home.tsx'
 import store from './components/store/store.ts'
 import { Provider } from 'react-redux'
 import AboutUs from './components/pages/AboutUs.tsx'
-import Membership from './components/pages/Membership.tsx'
 import Carrier from './components/pages/Carrier.tsx'
-import Offers from './components/pages/Offers.tsx'
-import Nutrition from './components/pages/Nutrition.tsx'
-
+import Activities from './components/pages/Activities.tsx'
+//import Nutrition from './components/pages/Nutrition.tsx'
+import PersonalTraining from './components/pages/PersonalTraining.tsx'
+import RecoveryTherpy from './components/pages/RecoveryTherpy.tsx'
 const router = createBrowserRouter([
   {
     path : '/',
@@ -22,24 +22,16 @@ const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path :'/about-us',
-        element: <AboutUs/>
+        path : '/personal-training',
+        element : <PersonalTraining/>
       },
       {
-        path : '/membership',
-        element : <Membership/>
+        path : '/activities',
+        element : <Activities/>
       },
       {
-        path : '/carrier',
-        element : <Carrier/>
-      },
-      {
-        path : '/offers',
-        element : <Offers/>
-      },
-      {
-        path : '/nutrition',
-        element : <Nutrition/>
+        path : '/recovery-therapy',
+        element : <RecoveryTherpy/>
       }
     ]
   }

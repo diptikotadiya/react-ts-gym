@@ -11,24 +11,18 @@ export const headerbttns : bttns[] =  [
   {name : 'Home',
      slug : '/'
   },
-  {name : 'About Me',
-    slug : '/about-us'
+  {
+    name: 'Personal Training',
+    slug: '/personal-training'
   },
   {
-    name: 'Membership',
-    slug: '/membership'
+    name : 'Activities',
+    slug : '/activities'
   },
   {
-    name : 'Carrier',
-    slug : '/carrier'
-  },
-  {
-    name : 'Offers',
-    slug : '/offers'
-  },
-  {
-    name : 'Nutrition',
-    slug : '/nutrition'
+    name : 'Recovery Therapy',
+    slug : '/recovery-therapy'
+   
   }
 ]
  const Header = ()=>{
@@ -48,7 +42,7 @@ export const headerbttns : bttns[] =  [
     <div className='flex flex-row my-auto'>
       <div className={`${flyout ? 'block' : 'hidden'} absolute top-[66px] right-0 bg-white text-black  w-full  lg:static lg:bg-black lg:text-white lg:flex lg:flex-row  `}>
         {headerbttns.map((item : bttns,index:number )=> (
-          <div key={index} className='flex lg:mr-5 text-lg  border-b-2 lg:border-0 p-2 lg:text-xl  font-light cursor-pointer' onClick={()=>(navigate(item.slug))}>
+          <div key={index} className='flex lg:mr-5 text-lg  border-b-2 lg:border-0 p-2 lg:text-xl  font-light cursor-pointer' onClick={()=>{navigate(item.slug);setFlyout(!flyout)}}>
             {item.name}
           </div>
         ))}
