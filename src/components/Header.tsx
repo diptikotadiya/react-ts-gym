@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import  { useState,useRef, useEffect } from 'react'
 import gymlogo from '../assets/gym-logo.png'
 import { IoMdMenu } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,23 @@ export const headerbttns : bttns[] =  [
  const Header = ()=>{
   const navigate = useNavigate();
   const [flyout,setFlyout] = useState<boolean>(false)
+  const flyoutRef = useRef<HTMLDivElement | null>(null);
   //const [hamMenu,setHamMenu] = useState(false)
+
+  useEffect(()=>{
+    const handleClickOutside = (event: MouseEvent) => {
+      if (flyoutRef.current && !flyoutRef.current.contains(event.target as Node)) {
+        setFlyout(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  
+    },[flyout])
   
   return (
   <div className='fixed left-0 top-0 w-full bg-black text-white p-2 lg:p-5 flex flex-row justify-between z-20'>
@@ -40,16 +56,20 @@ export const headerbttns : bttns[] =  [
 
     {/*right section*/}
     <div className='flex flex-row my-auto'>
-      <div className={`${flyout ? 'block' : 'hidden'} absolute top-[66px] right-0 bg-white text-black  w-full  lg:static lg:bg-black lg:text-white lg:flex lg:flex-row  `}>
-        {headerbttns.map((item : bttns,index:number )=> (
-          <div key={index} className='flex lg:mr-5 text-lg  border-b-2 lg:border-0 p-2 lg:text-xl  font-light cursor-pointer' onClick={()=>{navigate(item.slug);setFlyout(!flyout)}}>
-            {item.name}
-          </div>
-        ))}
+      <div
+      className={`${flyout ? 'block' : 'hidden'} absolute top-[66px] right-0 bg-white text-black  w-full  lg:static lg:bg-black lg:text-white lg:flex lg:flex-row  `}
+      tabIndex={-1}
+      ref={flyoutRef}
+      >
+      {headerbttns.map((item : bttns,index:number )=> (
+        <div key={index} className='flex lg:mr-5 text-lg  border-b-2 lg:border-0 p-2 lg:text-xl  font-light cursor-pointer' onClick={()=>{navigate(item.slug);setFlyout(!flyout)}}>
+        {item.name}
+        </div>
+      ))}
       </div>
       {/* menu icon*/}
       <div onClick={()=>setFlyout(!flyout)}>
-        <IoMdMenu className='lg:hidden w-[30px] h-[30px]'/>
+      <IoMdMenu className='lg:hidden w-[30px] h-[30px]'/>
       </div>
     </div>
   </div>
