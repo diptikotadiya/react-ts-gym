@@ -10,10 +10,10 @@ function PersonalTraining() {
               <img src={personalTrainerPage} className="w-full h-auto md:h-[300px] lg:h-[600px]"/>
             </div>
             <div className='text-4xl lg:text-6xl font-bold italic p-5 lg:p-10 '>
-                Experience the Best Personal Training Our Gym
+                Experience the Best Personal Training at Our Gym
             </div> 
             <div className=' px-5 lg:px-10 py-2 lg:py-5'>
-                <p className="text-xl lg:text-2xl font-bold">Now Offering Online Personal Training Anywhere!</p>
+                <div className="text-xl lg:text-2xl font-bold">Now Offering Online Personal Training Anywhere!</div>
                 <p className=" text-m lg:text-lg font-light py-2 lg:py-5">
                     Our personal trainers are here to help you achieve your fitness goals,
                     whether you're looking to lose weight, build muscle, or improve your overall health.

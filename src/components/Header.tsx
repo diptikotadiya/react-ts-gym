@@ -47,7 +47,7 @@ export const headerbttns : bttns[] =  [
     },[flyout])
   
   return (
-  <div className='fixed left-0 top-0 w-full bg-black text-white p-2 lg:p-5 flex flex-row justify-between z-20'>
+  <div className='fixed left-0 top-0 w-full bg-black text-white py-2 px-5 flex flex-row justify-between z-20'>
     
     {/*left section*/}
     <div onClick = {()=>{navigate('/')}}className='flex flex-row'>
@@ -62,7 +62,7 @@ export const headerbttns : bttns[] =  [
       ref={flyoutRef}
       >
       {headerbttns.map((item : bttns,index:number )=> (
-        <div key={index} className='flex lg:mr-5 text-lg  border-b-2 lg:border-0 p-2 lg:text-xl  font-light cursor-pointer' onClick={()=>{navigate(item.slug);setFlyout(!flyout)}}>
+        <div key={index} className='px-5  flex lg:mr-5 text-lg lg:text-xl bg-black text-white lg:border-0 p-2  font-light cursor-pointer' onClick={()=>{navigate(item.slug);setFlyout(!flyout)}}>
         {item.name}
         </div>
       ))}

@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
         value={value}
         onChange={(e) => handleChange && handleChange(e, placeholder)}
         placeholder={placeholder}
-        className={`w-full p-1 h-10 rounded-sm text-black text-lg ${classname}`}
+        className={`w-full p-2 h-10 rounded-sm text-black text-lg ${classname}`}
       />
     </div>
   );

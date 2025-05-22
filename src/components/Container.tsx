@@ -6,11 +6,7 @@ type ContainerProps = {
 
 const Container = ({children}: ContainerProps) => {
   return (
-    <div className='mt-[66px] lg:mt-[110px]
-    
-    
-    
-    '>
+    <div className='mt-[66px] lg:mt-[86px]'>
       {children}
     </div>
   )

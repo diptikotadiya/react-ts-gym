@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Footer = () => {
   const navigate = useNavigate()
   return (
-    <footer className='bg-black flex flex-col lg:flex-row mt-5 p-10 lg:py-20 lg:px-36 text-lg text-white font-light border-y-4 border-orange-500 space-y-10 lg:space-y-0 lg:space-x-36  '>
+    <footer className='bg-black flex flex-col lg:flex-row mt-2 lg:mt-5 p-5 lg:p-20  text-lg text-white font-light border-y-4 border-orange-500 space-y-10 lg:space-y-0 lg:space-x-36  '>
 
       {/* first section */}
       <div className='lg:w-1/3 flex flex-col space-y-5 pb-5 border-1 border-b border-orange-500 lg:border-none'>

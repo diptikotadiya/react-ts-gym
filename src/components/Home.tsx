@@ -23,7 +23,7 @@ import { addMembers } from './store/memberSlice'
 
 
 
-type singleImageDiv = {
+export type singleImageDiv = {
   image : string,
   title : string
 }
@@ -114,7 +114,7 @@ function Home() {
         </h1>
         {/* react-hook-form*/}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='flex flex-col lg:flex-row p-5 justify-center space-y-5 lg:space-y-0 lg:space-x-5'>
+          <div className='flex flex-col lg:flex-row py-5 justify-center space-y-5 lg:space-y-0 lg:space-x-5'>
             {/* using Input Component */}
             <Input 
             placeholder='Name'
@@ -157,14 +157,14 @@ function Home() {
 
       {/* third section */ }
 
-      <div className='flex flex-col lg:flex-row p-10 lg:p-20'>
+      <div className='flex flex-col lg:flex-row px-5 py-10 lg:p-20'>
         {/*left */}
         <div className='w-full lg:w-3/5 flex flex-col space-y-5 lg:space-y-10'>
           <div className='flex flex-col space-y-5 lg:space-y-7'>
             <h5 className='text-lg font-light'>
               YOUR BODY & YOUR FITNESS REQUIREMENTS ARE UNIQUE. YOUR PERSONAL TRAINING SHOULD REFLECT THAT!
               </h5>
-            <h2 className=' text-orange-600 text-6xl font-bold italic rounded'>
+            <h2 className=' text-orange-600 text-4xl lg:text-6xl  font-bold italic rounded'>
               Certified Personal Trainers
             </h2>
             <p className='text-lg font-light'>
@@ -182,13 +182,13 @@ function Home() {
       </div>
 
       {/*forth section*/}
-      <div className='relative flex flex-col lg:flex-row p-10 lg:p-20 bg-black text-white'>
+      <div className='relative flex flex-col lg:flex-row px-5 py-10 lg:p-20 bg-black text-white'>
         {/*left*/}
         <div className='w-full lg:w-2/5 flex flex-col space-y-5 lg:space-y-10'>
           <h5 className='text-lg font-light'>
             EXPERIENCE THE FITNESS WAVE
           </h5>
-          <h2 className=' text-orange-600 text-6xl font-bold italic rounded'>
+          <h2 className=' text-orange-600 lg:text-6xl text-4xl  font-bold italic rounded'>
             1500 Sq.ft Open Air CrossFit Studio
           </h2>
           <p className='text-lg font-light'>
@@ -208,20 +208,35 @@ function Home() {
          </div>
 
          {/*fifth section*/}
-          <div className='w-full flex flex-col p-10 lg:p-10 space-y-5 lg:space-y-7'>
+          <div className='w-full flex flex-col p-5 lg:p-20 space-y-5 lg:space-y-7'>
             <h5 className='text-lg font-light'>
               EXPERIENCED AND INTERNATIONALLY CERTIFIED TARINERS
             </h5>
-            <h2 className=' text-orange-600 text-6xl font-bold italic rounded'>
+            <h2 className=' text-orange-600 text-4xl lg:text-6xl font-bold italic rounded'>
               The Best Fitness Experience
             </h2>
             <p className='text-lg font-light'>
-              experienced & Internationally Certified personal trainers
+              We’re committed to bringing you the best workout experience.
             </p>
+            
+            <div className='w-full  flex flex-col lg:flex-row '>
+            {
+            imagesDiv.map((item : singleImageDiv,index:number) =>(
+              <div key={index} className='w-full lg:w-1/4 p-2 border-1px-gray-200 shadow-lg transition-transform duration-300 hover:scale-110'>
+                <div  className='w-full'>
+                  <img src={item.image} className='object-cover h-[250px] w-full rounded'/>
+                </div>
+                <div className='w-full h-[50px] mt-5 text-center text-lg font-normal'>
+                  <h5>{item.title}</h5>
+                </div>
+              </div>
+            ))
+            }
+            </div>
          </div>
 
-         {/*sixth section*/}
-         <div className='w-full  flex flex-col lg:flex-row px-5 lg:px-10'>
+        {/*sixth section*/}
+        { /* <div className='w-full  flex flex-col lg:flex-row px-5 lg:px-20 lg:pb-20'>
           {
             imagesDiv.map((item : singleImageDiv,index:number) =>(
               <div key={index} className='w-full lg:w-1/4 p-2 border-1px-gray-200 shadow-lg'>
@@ -234,15 +249,15 @@ function Home() {
               </div>
             ))
           }
-         </div>
+         </div>*/}
 
          {/* seventh section*/}
-         <div className='bg-black w-full p-10 lg:p-20 mt-5'>
-            <h5 className=' text-orange-600 text-6xl font-bold italic rounded'>
+         <div className='bg-black w-full py-10 px-5 lg:p-20 '>
+            <h5 className=' text-orange-600 text-4xl lg:text-6xl font-bold italic rounded'>
               Experience The Waves Gym
             </h5>
            
-            <h3 className='text-lg font-light text-white'>
+            <h3 className='text-lg font-light text-white pt-5'>
               Experience The Best Group Exercise Classes In Mumbai
             </h3>
             

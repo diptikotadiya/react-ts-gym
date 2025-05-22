@@ -12,7 +12,7 @@ function RecoveryTherpy() {
             Optimize Your Performance & Accelerate Healing
         </div> 
         <div className=' px-5 lg:px-10 py-2 lg:py-5'>
-                <p className="text-xl lg:text-2xl font-bold">Why Choose Our Recovery Therapy?</p>
+                <div className="text-xl lg:text-2xl font-bold">Why Choose Our Recovery Therapy?</div>
                 <p className=" text-m lg:text-lg font-light py-2 lg:py-5">
                     Our comprehensive Nomatec Package covers arms, hips, and legs therapy to ensure your entire body benefits. By improving circulation and reducing muscle tension, your recovery will never feel more effective or revitalizing.
                 </p>
@@ -28,7 +28,6 @@ function RecoveryTherpy() {
                     <li className="py-2"><span className="font-bold">10-Session Package (₹1499)  :  </span> Share with a friend or use all on your own for continuous, convenient recovery—at an unbeatable value.</li>
                     <li className="py-2"><span className="font-bold">Duration  :  </span> 30-minute session to boost circulation, alleviate soreness, and improve flexibility.</li>
                     <li className="py-2"><span className="font-bold">Flexibility  :  </span> Split into two 15-minute sessions within a week</li>
-            
                 </div>
         </div>
     </div>
